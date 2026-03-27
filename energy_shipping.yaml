@@ -1,0 +1,91 @@
+techs:
+
+# source: https://ens.dk/en/analyses-and-statistics/technology-data-renewable-fuels  - 2050, converted to USD
+
+
+    ammonia_shipping:
+        essentials:
+            color: '#D8BFD8'
+            name: 'Ammonia'   #N2 assumed to be ilimited
+            parent: conversion
+            carrier_in: hydrogen         
+            carrier_out: final_energy_shipping 
+        constraints:
+            energy_eff: 0.82
+            lifetime: 30 #danish database           
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 967742.1 # US$/MW ammonia  danish datebase, conversion factor to USD (1/.93)= 1.075   900.000 Euros = 967742.1 USD 
+                om_annual: 26000  # US$/MW/year ammonia  danish datebase
+                om_prod: 0.02 # US$/MWh  ammonia danish datebase 
+            co2:
+                om_prod: 0.086311475  # t CO2eq/MWh MUDAR 
+
+    emethanol_shipping:
+        essentials:
+            name: 'E-methanol'   #N2 assumed to be ilimited
+            parent: conversion_plus
+            carrier_in: hydrogen
+            carrier_in_2: co2
+            carrier_in_3: electricity      
+            carrier_out: final_energy_shipping
+            primary_carrier_in: hydrogen
+        constraints:
+            carrier_ratios:
+                carrier_in:
+                    hydrogen: 6.4  # MWh_H2 per ton MeOH 
+                carrier_in_2:
+                    co2: 0.253 # tCO2 per MWh methanol
+                carrier_in_3:
+                    electricity: 0.1 # MWh_el per ton MeOH
+                carrier_out:
+                    final_energy_shipping: 0.78 # MWh MeOH per MWh total input
+            lifetime: 30
+            energy_cap_max: 700  # assumed that 25 % of the shipping demand can be met by emethanol. Also assumed that 1GWh of emethanol requires 0.15 MW of installed cap. final energy is 4669 GWh for emethanol
+
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 933701    # USD/MW_methanol (DEA 2050)
+                om_annual: 28011      # USD/MW/year
+      
+      
+# water = 0.55 ton/ ton-methanol
+# source: DEA, 2025
+
+    hvo_shipping:
+        essentials:
+            color: '#D8BFD8'
+            name: "HVO-shipping"
+            parent: conversion_plus
+            carrier_out: final_energy_shipping     # HVO como energia final p/ shipping
+            carrier_in: soybean
+            carrier_in_2: hydrogen
+            carrier_in_3: electricity
+            primary_carrier_in: soybean            
+        constraints:       
+            lifetime: 25
+      # Razões por 1 MWh de HVO (carrier_out)
+            carrier_ratios:
+                carrier_in:
+                    soybean: 1.0365  
+                carrier_in_2:
+                    hydrogen: 0.1235 
+                carrier_in_3:
+                    electricity: 0.015 
+                carrier_out:
+                    final_energy_shipping: 1 
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 69662       # €/MW
+                om_annual: 43400        # €/MW/yr
+                om_prod: 10.30          # €/MWh (por MWh de HVO produzido)
+            co2:
+                om_prod: 0.0000001 
+            
+                        
+
+
+           

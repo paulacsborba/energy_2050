@@ -1,0 +1,345 @@
+overrides:
+
+    spores:
+        run.solver: gurobi
+        run.solver_io: python
+        run.cyclic_storage: true
+
+        run.ensure_feasibility: true
+        run.bigM: 1e9
+        run.zero_threshold: 1e-10
+
+        run.mode: spores
+        run.spores_options.spores_number: 10
+        run.spores_options.slack: 0.1
+        run.spores_options.slack_cost_group: systemwide_cost_max 
+        run.objective_options.cost_class: {'monetary':1}
+        group_constraints.systemwide_cost_max.cost_max.monetary: .inf
+        techs.ref_ethanol_1g_electricity_high.costs.spores_score.energy_cap: 0
+        techs.ref_ethanol_1g_electricity_high.costs.spores_score.interest_rate: 1
+        techs.ref_ethanol_1g_electricity_medium.costs.spores_score.energy_cap: 0
+        techs.ref_ethanol_1g_electricity_medium.costs.spores_score.interest_rate: 1
+        techs.ref_ethanol_1g_electricity_low.costs.spores_score.energy_cap: 0
+        techs.ref_ethanol_1g_electricity_low.costs.spores_score.interest_rate: 1
+
+        techs.ref_ethanol_1g_2g_high.costs.spores_score.energy_cap: 0
+        techs.ref_ethanol_1g_2g_high.costs.spores_score.interest_rate: 1
+        techs.ref_ethanol_1g_2g_medium.costs.spores_score.energy_cap: 0
+        techs.ref_ethanol_1g_2g_medium.costs.spores_score.interest_rate: 1
+        techs.ref_ethanol_1g_2g_low.costs.spores_score.energy_cap: 0
+        techs.ref_ethanol_1g_2g_low.costs.spores_score.interest_rate: 1
+
+
+
+    costs_2040:
+
+
+        #### reduction of 10% (opex) and 25% (capex) in biofuel from sugarcane technologies https://www.ieabioenergy.com/wp-content/uploads/2020/02/T41_CostReductionBiofuels-11_02_19-final.pdf (page 38)
+        #### It was considered the medium-term (15yrs) and pessimistic scenario
+
+        techs.ref_ethanol_1g_electricity_high.costs.monetary.energy_cap: 0.906375
+        techs.ref_ethanol_1g_electricity_high.costs.monetary.om_annual: 0.01089
+
+        techs.ref_ethanol_1g_electricity_medium.costs.monetary.energy_cap: 0.943575
+        techs.ref_ethanol_1g_electricity_medium.costs.monetary.om_annual: 0.01134
+
+        techs.ref_ethanol_1g_electricity_low.costs.monetary.energy_cap: 0.998475
+        techs.ref_ethanol_1g_electricity_low.costs.monetary.om_annual: 0.01197
+
+        techs.ref_ethanol_1g_2g_high.costs.monetary.energy_cap: 1.303725
+        techs.ref_ethanol_1g_2g_high.costs.monetary.om_annual: 0.10566
+
+        techs.ref_ethanol_1g_2g_medium.costs.monetary.energy_cap: 1.357275
+        techs.ref_ethanol_1g_2g_medium.costs.monetary.om_annual: 0.10629
+
+        techs.ref_ethanol_1g_2g_low.costs.monetary.energy_cap: 1.436175
+        techs.ref_ethanol_1g_2g_low.costs.monetary.om_annual: 0.10719
+
+
+    costs_2050:
+
+        #### reduction of 10% (opex) and 25% (capex) in biofuel from sugarcane technologies https://www.ieabioenergy.com/wp-content/uploads/2020/02/T41_CostReductionBiofuels-11_02_19-final.pdf (page 38)
+        #### It was considered the medium-term (15yrs) and pessimistic scenario
+
+        techs.ref_ethanol_1g_electricity_high.costs.monetary.energy_cap: 0.906375
+        techs.ref_ethanol_1g_electricity_high.costs.monetary.om_annual: 0.01089
+
+        techs.ref_ethanol_1g_electricity_medium.costs.monetary.energy_cap: 0.943575
+        techs.ref_ethanol_1g_electricity_medium.costs.monetary.om_annual: 0.01134
+
+        techs.ref_ethanol_1g_electricity_low.costs.monetary.energy_cap: 0.998475
+        techs.ref_ethanol_1g_electricity_low.costs.monetary.om_annual: 0.01197
+
+        techs.ref_ethanol_1g_2g_high.costs.monetary.energy_cap: 1.303725
+        techs.ref_ethanol_1g_2g_high.costs.monetary.om_annual: 0.10566
+
+        techs.ref_ethanol_1g_2g_medium.costs.monetary.energy_cap: 1.357275
+        techs.ref_ethanol_1g_2g_medium.costs.monetary.om_annual: 0.10629
+
+        techs.ref_ethanol_1g_2g_low.costs.monetary.energy_cap: 1.436175
+        techs.ref_ethanol_1g_2g_low.costs.monetary.om_annual: 0.10719
+
+
+
+    priority_lands_for_conservation_and_sigef:
+
+        locations.BA_Z1_high.available_area: 0
+        locations.BA_Z2_high.available_area: 0
+        locations.BA_Z3_high.available_area: 0
+        locations.BA_Z4_high.available_area: 1.375
+        locations.ES_Z1_high.available_area: 85.4375
+        locations.GO_Z1_high.available_area: 3459
+        locations.MG_Z1_high.available_area: 0
+        locations.MG_Z2_high.available_area: 0
+        locations.MG_Z4_high.available_area: 85.44
+        locations.MG_Z5_high.available_area: 25.06
+        locations.MG_Z6_high.available_area: 0
+        locations.MG_Z7_high.available_area: 0
+        locations.MG_Z8_high.available_area: 15.68
+        locations.MS_Z1_high.available_area: 9814.69
+        locations.MS_Z3_high.available_area: 2551
+        locations.MS_Z4_high.available_area: 29331.06
+        locations.MT_Z6_high.available_area: 180.06
+        locations.PR_Z1_high.available_area: 0
+        locations.PR_Z2_high.available_area: 886.125
+        locations.RJ_Z1_high.available_area: 14.81
+        locations.RS_Z2_high.available_area: 0
+        locations.RS_Z3_high.available_area: 0
+        locations.SP_Z1_high.available_area: 10760
+        locations.SP_Z2_high.available_area: 12399.44
+        locations.SP_Z3_high.available_area: 1991.44
+
+    full_sugarcane_potential:
+
+        locations.BA_Z1_high.available_area: 0
+        locations.BA_Z2_high.available_area: 0.125
+        locations.BA_Z3_high.available_area: 0.125
+        locations.BA_Z4_high.available_area: 3.6875
+        locations.ES_Z1_high.available_area: 0.875
+        locations.GO_Z1_high.available_area: 9600.94
+        locations.MG_Z1_high.available_area: 0
+        locations.MG_Z2_high.available_area: 0
+        locations.MG_Z4_high.available_area: 1.44
+        locations.MG_Z5_high.available_area: 1.31
+        locations.MG_Z7_high.available_area: 13
+        locations.MG_Z8_high.available_area: 0.375
+        locations.MS_Z1_high.available_area: 16577.69
+        locations.MS_Z3_high.available_area: 4138.81
+        locations.MS_Z4_high.available_area: 39577.63
+        locations.MT_Z6_high.available_area: 346.5
+        locations.PR_Z1_high.available_area: 0
+        locations.PR_Z2_high.available_area: 2359.25
+        locations.RJ_Z1_high.available_area: 0.375
+        locations.RS_Z2_high.available_area: 0.3125
+        locations.RS_Z3_high.available_area: 109.44
+        locations.SP_Z1_high.available_area: 25994.375
+        locations.SP_Z2_high.available_area: 32120.93
+        locations.SP_Z3_high.available_area: 5198.875
+
+        locations.BA_Z2_low.available_area: 15.8130
+        locations.BA_Z4_low.available_area: 5927.0346
+        locations.MG_Z4_low.available_area: 591.5016
+        locations.MG_Z5_low.available_area: 27.7515
+        locations.MG_Z7_low.available_area: 320.2812
+        locations.MG_Z8_low.available_area: 274.3821
+        locations.MS_Z1_low.available_area: 838.6776
+        locations.MS_Z3_low.available_area: 6275.4993
+        locations.MS_Z4_low.available_area: 14117.1354
+        locations.PR_Z1_low.available_area: 0
+        locations.PR_Z2_low.available_area: 5912.3250
+        locations.RJ_Z1_low.available_area: 98.3556
+        locations.RS_Z3_low.available_area: 1061.6058
+        locations.SC_Z1_low.available_area: 434.4129
+        locations.SC_Z2_low.available_area: 509.0706
+        locations.SE_Z1_low.available_area: 1165.1796
+        locations.SP_Z2_low.available_area: 354.3390
+        locations.SP_Z3_low.available_area: 135.3474
+
+        locations.BA_Z1_medium.available_area: 687.5694
+        locations.BA_Z2_medium.available_area: 366.4836
+        locations.BA_Z3_medium.available_area: 654.5799
+        locations.BA_Z4_medium.available_area: 1016.6967
+        locations.BA_Z5_medium.available_area: 9658.3644
+        locations.CE_Z2_medium.available_area: 519.3864
+        locations.ES_Z1_medium.available_area: 2296.9728
+        locations.GO_Z1_medium.available_area: 47172.0105
+        locations.GO_Z2_medium.available_area: 28808.5527
+        locations.GO_Z3_medium.available_area: 3330.0846
+        locations.GO_Z4_medium.available_area: 7777.9800
+        locations.MA_Z1_medium.available_area: 1528.4781
+        locations.MA_Z2_medium.available_area: 648.6453
+        locations.MA_Z3_medium.available_area: 3994.7094
+        locations.MG_Z1_medium.available_area: 964.2870
+        locations.MG_Z2_medium.available_area: 7117.4178
+        locations.MG_Z3_medium.available_area: 6134.5242
+        locations.MG_Z4_medium.available_area: 1221.5925
+        locations.MG_Z5_medium.available_area: 2508.8085
+        locations.MG_Z6_medium.available_area: 11291.5251
+        locations.MG_Z7_medium.available_area: 7563.1617
+        locations.MG_Z8_medium.available_area: 430.1622
+
+        locations.MS_Z1_medium.available_area: 17569.2276
+        locations.MS_Z3_medium.available_area: 3905.5887
+        locations.MS_Z4_medium.available_area: 1861.1802
+        locations.MT_Z1_medium.available_area: 13729.3227
+        locations.MT_Z2_medium.available_area: 9616.2399
+        locations.MT_Z3_medium.available_area: 10475.6436
+        locations.MT_Z4_medium.available_area: 95.2551
+        locations.MT_Z5_medium.available_area: 18.0666
+        locations.MT_Z6_medium.available_area: 10482.2883
+        locations.PB_Z1_medium.available_area: 127.7001
+        locations.PE_Z1_medium.available_area: 613.8270
+        locations.PI_Z2_medium.available_area: 2704.0770
+        locations.PR_Z1_medium.available_area: 51.2685
+        locations.PR_Z2_medium.available_area: 7856.6634
+        locations.RJ_Z1_medium.available_area: 1928.9943
+        locations.RN_Z1_medium.available_area: 701.9019
+        locations.RS_Z2_medium.available_area: 2221.9560
+        locations.RS_Z3_medium.available_area: 7779.2481
+        locations.SP_Z1_medium.available_area: 12610.6542
+        locations.SP_Z2_medium.available_area: 10267.8615
+        locations.SP_Z3_medium.available_area: 1546.2693
+        locations.TO_Z1_medium.available_area: 4666.7268
+        locations.TO_Z2_medium.available_area: 2492.7723
+
+
+
+########### available area of sugarcane without forest 
+
+    land_constraints_without_forest:
+
+
+        locations.BA_Z1_high.available_area: 21.5631
+        locations.BA_Z2_high.available_area: 16.7472
+        locations.BA_Z3_high.available_area: 106.6950
+        locations.BA_Z4_high.available_area: 2121.1542
+        locations.ES_Z1_high.available_area: 631.0809
+        locations.GO_Z1_high.available_area: 4020.0435
+        locations.MG_Z1_high.available_area: 651.4074
+        locations.MG_Z2_high.available_area: 181.2402
+        locations.MG_Z4_high.available_area: 2114.1765
+        locations.MG_Z5_high.available_area: 273.4281
+        locations.MG_Z7_high.available_area: 3219.7797
+        locations.MG_Z8_high.available_area: 1354.6251
+        locations.MS_Z1_high.available_area: 14395.6170
+        locations.MS_Z3_high.available_area: 3404.6118
+        locations.MS_Z4_high.available_area: 35389.4733
+        locations.MT_Z6_high.available_area: 363.8907
+        locations.PR_Z1_high.available_area: 10.8999
+        locations.PR_Z2_high.available_area: 23876.5392
+        locations.RJ_Z1_high.available_area: 752.4720
+        locations.RS_Z2_high.available_area: 131.9580
+        locations.RS_Z3_high.available_area: 1077.3036
+        locations.SP_Z1_high.available_area: 21811.3281
+        locations.SP_Z2_high.available_area: 25710.0129
+        locations.SP_Z3_high.available_area: 5772.7737
+
+        locations.BA_Z2_low.available_area: 8.8596
+        locations.MG_Z4_low.available_area: 539.3223
+        locations.MG_Z5_low.available_area: 24.4773
+        locations.MG_Z7_low.available_area: 286.1379
+        locations.MG_Z8_low.available_area: 248.7546
+        locations.MS_Z1_low.available_area: 798.9678
+        locations.MS_Z3_low.available_area: 6190.9308
+        locations.MS_Z4_low.available_area: 13835.1249
+        locations.PR_Z1_low.available_area: 0
+        locations.PR_Z2_low.available_area: 5439.9627
+        locations.RJ_Z1_low.available_area: 93.2031
+        locations.RS_Z2_low.available_area: 118.5102
+        locations.RS_Z3_low.available_area: 994.6854
+        locations.SC_Z1_low.available_area: 407.5650
+        locations.SC_Z2_low.available_area: 411.6681
+        locations.SE_Z1_low.available_area: 1082.4660
+        locations.SP_Z1_low.available_area: 69.4071
+        locations.SP_Z2_low.available_area: 308.8269
+        locations.SP_Z3_low.available_area: 128.3031
+
+        locations.BA_Z1_medium.available_area: 578.2941
+        locations.BA_Z2_medium.available_area: 297.2007
+        locations.BA_Z3_medium.available_area: 629.7210
+        locations.BA_Z4_medium.available_area: 770.9238
+        locations.BA_Z5_medium.available_area: 9658.3644
+        locations.CE_Z2_medium.available_area: 515.9889
+        locations.ES_Z1_medium.available_area: 2202.4116
+        locations.GO_Z1_medium.available_area: 44837.2350
+        locations.GO_Z2_medium.available_area: 27204.2667
+        locations.GO_Z3_medium.available_area: 3225.7296
+        locations.GO_Z4_medium.available_area: 7481.7927
+        locations.MA_Z1_medium.available_area: 1248.5322
+        locations.MA_Z2_medium.available_area: 543.8286
+        locations.MA_Z3_medium.available_area: 3909.6306
+        locations.MG_Z1_medium.available_area: 850.8384
+        locations.MG_Z2_medium.available_area: 6269.7537
+        locations.MG_Z3_medium.available_area: 5963.8563
+        locations.MG_Z4_medium.available_area: 1137.9978
+        locations.MG_Z5_medium.available_area: 2232.8460
+        locations.MG_Z6_medium.available_area: 11024.2629
+        locations.MG_Z7_medium.available_area: 7260.2532
+        locations.MG_Z8_medium.available_area: 409.2237
+
+
+        locations.MS_Z1_medium.available_area: 16592.8374
+        locations.MS_Z3_medium.available_area: 3797.6967
+        locations.MS_Z4_medium.available_area: 1834.8552
+        locations.MT_Z1_medium.available_area: 13308.6087
+        locations.MT_Z2_medium.available_area: 9456.7626
+        locations.MT_Z3_medium.available_area: 10248.9318
+        locations.MT_Z4_medium.available_area: 95.0580
+        locations.MT_Z5_medium.available_area: 17.4159
+        locations.MT_Z6_medium.available_area: 10301.3487
+        locations.PB_Z1_medium.available_area: 118.9944
+        locations.PE_Z1_medium.available_area: 566.3169
+
+        locations.PI_Z2_medium.available_area: 2701.8522
+        locations.PR_Z1_medium.available_area: 37.4256
+        locations.PR_Z2_medium.available_area: 7159.2552
+
+        locations.RJ_Z1_medium.available_area: 1838.2374
+        locations.RN_Z1_medium.available_area: 663.6042
+        locations.RS_Z2_medium.available_area: 1953.5778
+        locations.RS_Z3_medium.available_area: 7228.2528
+        locations.SP_Z1_medium.available_area: 11920.5864
+        locations.SP_Z2_medium.available_area: 9243.3141
+        locations.SP_Z3_medium.available_area: 1372.4271
+        locations.TO_Z1_medium.available_area: 4377.2679
+        locations.TO_Z2_medium.available_area: 2429.6904
+
+
+    teste:
+        techs.light_vehicles_dummy_elec.exists: false
+    
+        
+    demand_nz:
+
+        techs.demand_ethanol.constraints.resource: file=demand/demand_ethanol_nz_elec_bio.csv
+        techs.demand_methanol.constraints.resource: file=demand/demand_e-methanol_nz_elec_bio.csv       
+        techs.demand_hvo.constraints.resource: file=demand/demand_hvo_nz_elec_bio.csv
+        techs.demand_saf.constraints.resource: file=demand/demand_saf_nz_elec_bio.csv
+        techs.demand_ammonia.constraints.resource: file=demand/demand_ammonia_nz_elec_bio.csv
+
+      
+
+    demand_nz_elec:
+
+        techs.demand_ethanol.exists: false
+        techs.demand_methanol.constraints.resource: file=demand/demand_e-methanol_nz_elec.csv       
+        techs.demand_hvo.constraints.resource: file=demand/demand_hvo_nz_elec.csv
+        techs.demand_saf.constraints.resource: file=demand/demand_saf_nz_elec.csv
+        techs.demand_ammonia.constraints.resource: file=demand/demand_ammonia_nz_elec.csv
+      
+    demand_nz3:
+
+        techs.demand_ethanol.exists: false
+        techs.demand_methanol.constraints.resource: file=demand/demand_e-methanol_nz3.csv       
+        techs.demand_e-kerosene.constraints.resource: file=demand/demand_e-kerosene_nz3.csv
+        techs.demand_saf.exists: false
+        techs.demand_hvo.exists: false        
+        techs.demand_ammonia.constraints.resource: file=demand/demand_ammonia_nz3.csv       
+
+
+
+    emissions:
+        model.objective_options.cost_class: {'emission':1}
+
+
+

@@ -1,0 +1,136 @@
+techs:
+
+    road_transportation_HDV:
+        essentials:
+            name: 'Road transportation - Ethanol'
+            parent: transmission
+            carrier: useful_energy_heavy_vehicles
+        constraints:
+            lifetime: 25       
+        costs:
+            monetary:
+               interest_rate: 0.1
+#               om_prod: 0.0124 # USD/MWh-km #0.000118984  # US$/L-km # colocar por links multiplicar pela distancia
+            co2:
+               om_prod:  0.084274268  # t CO2eq/MWh confirmar
+
+    road_transportation_LDV_ethanol:
+        essentials:
+            name: 'Road transportation - LDV'
+            parent: transmission
+            carrier: useful_energy_light_vehicles_ethanol
+        constraints:
+            lifetime: 25       
+        costs:
+            monetary:
+               interest_rate: 0.1
+        #       om_prod: 0.0202 #USD/MWh-km     #0.000118984 US$/L-km # colocar por links multiplicar pela distancia
+            co2:
+               om_prod:  0.084274268  # t CO2eq/MWh confirmar
+
+
+    transportation_aviation:
+        essentials:
+            name: 'Aviation - transportation'
+            parent: transmission
+            carrier: useful_energy_aviation
+        constraints:
+            lifetime: 25       
+        costs:
+            monetary:
+               interest_rate: 0.1
+               om_prod: 0.0128 #USD/MWh-km  #   0.000118984 US$/L-km # colocar por links multiplicar pela distancia
+            co2:
+               om_prod:  0.084274268  # t CO2eq/MWh confirmar
+
+
+    transportation_shipping:
+        essentials:
+            name: 'Road- shipping'
+            parent: transmission
+            carrier: useful_energy_shipping
+        constraints:
+            lifetime: 25           
+        costs:
+            monetary:
+               interest_rate: 0.1
+ #              energy_cap: 0.0128  #USD/MWh-km  #   0.000118984 US$/L-km  colocar por links multiplicar pela distancia
+            co2:
+               om_prod:  0.084274268  # t CO2eq/MWh confirmar   
+                      
+               
+    free_transportation_co2:
+        essentials:
+            name: 'Free transportation'
+            parent: transmission
+            carrier: co2
+        constraints:
+            lifetime: 25           
+        costs:
+            monetary:
+               interest_rate: 0.1
+               energy_cap: 0  # US$/L-km  colocar por links multiplicar pela distancia
+            co2:
+               om_prod: 0 # t CO2eq/MWh confirmar                 
+               
+               
+    pipeline_h2:   # considering new infra 
+        essentials:
+            name: 'Free transportation'
+            parent: transmission
+            carrier: hydrogen
+        constraints:
+            lifetime: 25           
+        costs:
+            monetary:
+               om_prod: 0.002   # USD/MWh-km
+               interest_rate: 0.1
+               energy_cap_per_distance: 15000  # US$/MW-km  colocar por links multiplicar pela distancia
+            co2:
+               om_prod: 0 # t CO2eq/MWh confirmar                 
+               
+               
+    free_transportation_electricity:  # considering new infra since the capacity is already reached
+        essentials:
+            name: 'Free transportation'
+            parent: transmission
+            carrier: electricity
+        constraints:
+            lifetime: 25           
+        costs:
+            monetary:
+               interest_rate: 0.1
+               energy_cap_per_distance: 1000 # USD/MW-km (linha + subestação embutida)  
+            co2:
+               om_prod: 0 # t CO2eq/MWh confirmar               
+
+
+    free_transportation_soybean:
+        essentials:
+            name: 'Free transportation'
+            parent: transmission
+            carrier: soybean
+        constraints:
+            lifetime: 25           
+        costs:
+            monetary:
+               interest_rate: 0.1
+               energy_cap: 0  # US$/L-km  colocar por links multiplicar pela distancia
+            co2:
+               om_prod: 0 # t CO2eq/MWh confirmar
+
+    free_transportation_sugarcane:
+        essentials:
+            name: 'Free transportation'
+            parent: transmission
+            carrier: final_energy_light_vehicles_ethanol
+        constraints:
+            lifetime: 25           
+        costs:
+            monetary:
+               interest_rate: 0.1
+               energy_cap: 0  # US$/L-km  colocar por links multiplicar pela distancia
+            co2:
+               om_prod: 0 # t CO2eq/MWh confirmar
+
+

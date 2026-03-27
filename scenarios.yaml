@@ -1,0 +1,52 @@
+scenarios: 
+
+# Baseline
+
+    scenario_baseline: ['costs_2050','demand_baseline']
+    
+    
+    
+    
+    
+# LC: land constraints
+
+    scenario_lc: ['costs_2050','priority_lands_for_conservation_and_sigef']  
+    scenario_basic: ['costs_2050','full_sugarcane_potential']     
+    
+    #####################################################
+
+
+# Netzero Elec. + Biofuels
+
+    scenario_nz_elec_bio: ['costs_2050','demand_nz_elec_bio']
+    
+    
+# Netzero Elec. + Biofuels LC: land constraints
+
+    scenario_nz_elec_bio_lc: ['costs_2050','land_constraints','demand_nz_elec_bio']  
+
+
+    #####################################################
+    
+# Netzero Elec. 
+
+    scenario_nz_elec: ['costs_2050','demand_nz_elec']
+    
+    
+#  Netzero Elec.  LC: land constraints
+
+    scenario_nz_elec_lc: ['costs_2050','land_constraints','demand_nz_elec']  
+    
+    
+
+     #####################################################
+
+# Netzero PtX
+
+    scenario_nz3: ['costs_2050','demand_nz3']
+    
+    
+# Netzero PtX LC: land constraints
+
+    scenario_nz3_lc: ['costs_2050','land_constraints','demand_nz3']  
+      

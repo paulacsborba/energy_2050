@@ -1,0 +1,42 @@
+techs:
+            
+    demand_heavy_vehicles:
+        essentials:
+            name: 'Demand-Heavy-Vehicles'
+            carrier: useful_energy_heavy_vehicles            
+            parent: demand
+        constraints:
+            resource: file=demand/demand_heavy_vehicles.csv  #useful
+            resource_scale: 1000
+            resource_unit: energy  
+
+    demand_light_vehicles:
+        essentials:
+            name: 'Demand-Light-Duty-Vehicles'
+            carrier: useful_energy_light_vehicles            
+            parent: demand
+        constraints:
+            resource: file=demand/demand_light_vehicles.csv  #useful
+            resource_scale: 1000
+            resource_unit: energy
+            
+    demand_aviation:
+        essentials:
+            name: 'Demand-aviation'
+            carrier: useful_energy_aviation
+            parent: demand
+        constraints:
+            resource: file=demand/demand_aviation.csv  #useful
+            resource_scale: 1000
+            resource_unit: energy
+
+                           
+    demand_shipping:
+        essentials:
+            name: 'Demand-Shipping'
+            carrier: useful_energy_shipping            
+            parent: demand
+        constraints:
+            resource: file=demand/demand_shipping.csv
+            resource_scale: 1000
+            resource_unit: energy              

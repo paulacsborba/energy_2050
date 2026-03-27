@@ -1,0 +1,207 @@
+###### UNITS and FEEDSTOCK:
+
+### Solid bioenergy:
+# Charcoal: MWh - Wood
+
+### Liquid bioenergy:
+# Biodiesel: L - Soy oil
+# Ethanol: L - Sugarcane and corn
+# HVO: L - Soy oil
+# SAF: L - Ethanol and soy oil
+
+import:
+
+    - techs/energy_aviation.yaml
+    - techs/energy_light_vehicles.yaml
+    - techs/energy_heavy_vehicles.yaml
+    - techs/energy_shipping.yaml    
+    - techs/dummy.yaml 
+    - techs/storage.yaml
+   
+    - techs/transport.yaml
+    - techs/demand.yaml
+
+    - techs/hydrogen.yaml    
+#    - techs/beccs.yaml  
+
+# ALL TECHS: 
+# 1.     
+
+## locations
+
+    - locations/locations_hvo_jet_fuel.yaml
+    - locations/locations_ekerosene.yaml
+ #   - locations/locations_ref_ethanol_1g_existing.yaml   
+ #   - locations/locations_tanks_saf.yaml   
+    - locations/locations_aviation_dummy.yaml   
+    
+    - locations/locations_hvo_shipping.yaml    
+    - locations/locations_ammonia_shipping.yaml  
+    - locations/locations_emethanol_shipping.yaml
+    - locations/locations_shipping_dummy.yaml    
+  #  - locations/locations_tanks_shipping.yaml    
+
+
+ #   - locations/locations_light_vehicles_dummy_ethanol.yaml
+    - locations/locations_light_vehicles_dummy_elec.yaml
+    
+  #  - locations/locations_ref_conversion_1g_electricity.yaml    
+  #  - locations/locations_beccs.yaml   
+ #   - locations/locations_tanks_ethanol.yaml   
+    
+ #   - locations/locations_tanks_hvo.yaml
+    - locations/locations_hvo_heavy_vehicles.yaml    
+    - locations/locations_heavy_vehicles_dummy.yaml
+ 
+    - locations/locations_ethanol.yaml 
+    
+    - locations/locations_electrolyser_h2.yaml
+    - locations/locations_electricity.yaml
+  #  - locations/locations_co2.yaml
+    - locations/locations_feedstock_soybean.yaml
+    - locations/locations_storage_co2.yaml
+  #  - locations/locations_storage_hydrogen.yaml    
+    
+    - locations/locations_road_transportation_HDV.yaml
+    - locations/locations_road_transportation_LDV_ethanol.yaml
+
+    - locations/locations_transportation_aviation.yaml
+    - locations/locations_transportation_shipping.yaml
+
+    - locations/locations_free_transportation_co2.yaml
+    - locations/locations_pipeline_h2.yaml
+    - locations/locations_free_transportation_electricity.yaml
+
+    - locations/locations_free_transportation_sugarcane.yaml    
+    - locations/locations_free_transportation_soybean.yaml    
+
+
+
+## scenarios
+    - overrides.yaml
+    - scenarios.yaml
+
+model:
+
+  name: 'brazil_model_biomass'
+  calliope_version: 0.6.6
+  timeseries_data_path: 'data'
+  reserve_margin: 
+       electricity: 0.15
+  subset_time: ['2019-01-01', '2019-12-31']  #2050
+  time: {function: resample, function_options: {'resolution': '360H'}}
+   
+run:
+  solver: gurobi
+  solver_io: python
+  cyclic_storage: true
+  ensure_feasibility: true
+  bigM: 1e9
+  zero_threshold: 1e-10
+  mode: spores
+  objective_options:
+       cost_class: {'monetary':1}
+       
+       
+run.spores_options:
+  spores_number: 2  # The number of SPORES to generate
+  slack: 0.2  # The fraction above the cost-optimal cost to set the maximum cost during SPORES
+  score_cost_class: spores_score  # The cost class to optimise against when generating SPORES
+  slack_cost_group: systemwide_cost_max  # The group constraint name in which the `cost_max` constraint is assigned, for use alongside the slack and cost-optimal cost
+ 
+
+group_constraints:
+  systemwide_cost_max.cost_max.monetary: inf
+  
+techs.electricity.costs.spores_score.om_prod: 1000
+techs.electricity.costs.spores_score.interest_rate: 1
+
+        
+locations:
+
+  BA_Z1_high,BA_Z2_high,BA_Z3_high,BA_Z4_high,ES_Z1_high,GO_Z1_high,MG_Z1_high,MG_Z2_high,MG_Z4_high,MG_Z5_high,MG_Z6_high,MG_Z7_high,MG_Z8_high,MS_Z1_high,MS_Z3_high,MS_Z4_high,MT_Z6_high,PR_Z1_high,PR_Z2_high,RJ_Z1_high,RS_Z2_high,RS_Z3_high,SP_Z1_high,SP_Z2_high,SP_Z3_high:
+    techs:
+         tanks_ethanol:
+         ref_ethanol_1g_electricity_high:
+         ref_ethanol_1g_2g_high:
+         light_vehicles_dummy_ethanol:
+         light_vehicles_dummy_ethanol_with_BECCS:
+         road_transportation_LDV_ethanol:
+         ref_conversion_1g_electricity:
+
+  BA_Z1_medium,BA_Z2_medium,BA_Z3_medium,BA_Z4_medium,BA_Z5_medium,CE_Z2_medium,ES_Z1_medium,GO_Z1_medium,GO_Z2_medium,GO_Z3_medium,GO_Z4_medium,MA_Z1_medium,MA_Z2_medium,MA_Z3_medium,MG_Z1_medium,MG_Z2_medium,MG_Z3_medium,MG_Z4_medium,MG_Z5_medium,MG_Z6_medium,MG_Z7_medium,MG_Z8_medium,MS_Z1_medium,MS_Z3_medium,MS_Z4_medium,MT_Z1_medium,MT_Z2_medium,MT_Z3_medium,MT_Z4_medium,MT_Z5_medium,MT_Z6_medium,PB_Z1_medium,PE_Z1_medium,PI_Z2_medium,PR_Z1_medium,PR_Z2_medium,RJ_Z1_medium,RN_Z1_medium,RS_Z2_medium,RS_Z3_medium,SC_Z2_medium,SP_Z1_medium,SP_Z2_medium,SP_Z3_medium,TO_Z1_medium,TO_Z2_medium:
+    techs:
+         tanks_ethanol:
+         light_vehicles_dummy_ethanol:
+         light_vehicles_dummy_ethanol_with_BECCS:
+         ref_ethanol_1g_electricity_medium:
+         ref_ethanol_1g_2g_medium:
+         road_transportation_LDV_ethanol:
+
+  BA_Z2_low,BA_Z3_low,BA_Z4_low,MG_Z1_low,MG_Z4_low,MG_Z5_low,MG_Z7_low,MG_Z8_low,MS_Z1_low,MS_Z3_low,MS_Z4_low,MT_Z6_low,PR_Z1_low,PR_Z2_low,RJ_Z1_low,RS_Z2_low,RS_Z3_low,SC_Z1_low,SC_Z2_low,SE_Z1_low,SP_Z1_low,SP_Z2_low,SP_Z3_low:
+    techs:
+         tanks_ethanol:
+         light_vehicles_dummy_ethanol:
+         light_vehicles_dummy_ethanol_with_BECCS:
+         ref_ethanol_1g_electricity_low:
+         ref_ethanol_1g_2g_low:
+         road_transportation_LDV_ethanol:
+
+
+
+  AC_Z1,AP_Z1,AL_Z1,AM_Z1,BA_Z1,BA_Z2,BA_Z3,BA_Z4,BA_Z5,BA_Z6,BA_Z7,CE_Z1,CE_Z2,ES_Z1,GO_Z1,GO_Z2,GO_Z3,GO_Z4,MA_Z1,MA_Z2,MA_Z3,MG_Z1,MG_Z2,MG_Z3,MG_Z4,MG_Z5,MG_Z6,MG_Z7,MG_Z8,MS_Z1,MS_Z2,MS_Z3,MS_Z4,MT_Z1,MT_Z2,MT_Z3,MT_Z4,MT_Z5,MT_Z6,PA_Z1,PA_Z2,PA_Z3,PA_Z4,PA_Z5,PB_Z1,PE_Z1,PE_Z2,PI_Z1,PI_Z2,PI_Z3,PR_Z1,PR_Z2,RJ_Z1,RO_Z1,RO_Z2,RR_Z1,RN_Z1,RS_Z1,RS_Z2,RS_Z3,SC_Z1,SC_Z2,SE_Z1,SP_Z1,SP_Z2,SP_Z3,TO_Z1,TO_Z2:
+    techs:  
+
+         demand_heavy_vehicles:
+         demand_light_vehicles:
+         demand_aviation:
+         
+         hvo_jet_fuel:
+         ekerosene:
+         
+         tanks_hvo:
+         hvo_heavy_vehicles:
+         
+         light_vehicles_dummy_ethanol:
+         light_vehicles_dummy_ethanol_with_BECCS:
+         light_vehicles_dummy_elec:     
+         aviation_dummy:
+         heavy_vehicles_dummy:         
+        # co2:
+         electricity:
+         electrolyser_h2:
+      
+         
+         tanks_shipping:
+         tanks_saf:
+         tanks_ethanol:
+         storage_hydrogen:
+         storage_co2:
+         
+         
+         transportation_shipping:
+         road_transportation_HDV:
+         road_transportation_LDV_ethanol:
+  #       road_transportation_LDV_elec:
+
+         transportation_aviation:
+
+         free_transportation_co2:
+         pipeline_h2:
+         free_transportation_electricity:                 
+         free_transportation_sugarcane:
+         free_transportation_soybean:         
+
+         hvo_shipping:
+        
+
+
+  RJ_Z1:         
+    techs:  
+         demand_shipping:
+
+       
+
+
+
+        

@@ -1,0 +1,192 @@
+techs:
+
+    feedstock_soybean:
+        essentials:
+            parent: supply
+            carrier: soybean
+        constraints:
+            resource: file=resources/soybean.csv
+            energy_eff: 1
+            lifetime: 25 #
+            resource_unit: energy
+        costs:
+            monetary:
+                interest_rate: 0.1
+                om_prod: 155 # USD/MWh soy_feedstock  CHECAR
+                
+                
+    electricity:
+        essentials:
+            parent: supply
+            carrier: electricity
+        constraints:
+            resource: inf
+            constraints:
+            energy_eff: 1
+            lifetime: 25 #
+        costs:
+            monetary:
+                interest_rate: 0.1
+                om_prod: 300
+
+    # co2:
+        # essentials:
+            # parent: supply
+            # carrier: co2
+        # constraints:
+            # resource: inf
+            # constraints:
+            # energy_eff: 1
+            # lifetime: 25 #
+        # costs:
+            # monetary:
+                # interest_rate: 0.1
+                # om_prod: 0                
+                
+    shipping_dummy:
+        essentials:
+            color: '#D8BFD8'
+            name: 'Shipping engine'  
+            parent: conversion
+            carrier_in: final_energy_shipping         
+            carrier_out: useful_energy_shipping 
+        constraints:
+            energy_eff: 0.45
+            lifetime: 25 #         
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 
+                om_annual: 0 
+                om_prod: 0 
+            co2:
+                om_prod: 0  
+
+    heavy_vehicles_dummy:
+        essentials:
+            color: '#D8BFD8'
+            name: 'Truck engine'  
+            parent: conversion
+            carrier_in: final_energy_heavy_vehicles         
+            carrier_out: useful_energy_heavy_vehicles 
+        constraints:
+            energy_eff: 0.45
+            lifetime: 25 #         
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 
+                om_annual: 0 
+                om_prod: 0 
+            co2:
+                om_prod: 0
+
+    light_vehicles_dummy_elec:
+        essentials:
+            color: '#D8BFD8'
+            name: 'Light vehicle engine'  
+            parent: conversion
+            carrier_in: electricity         
+            carrier_out: useful_energy_light_vehicles 
+        constraints:
+            energy_eff: 0.91
+            lifetime: 25 #         
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 
+                om_annual: 0 
+                om_prod: 2500 #USD/MWh valor assumido para custo de eletricidade + infra de carregamento 
+            co2:
+                om_prod: 0
+
+    light_vehicles_dummy_ethanol:
+        essentials:
+            color: '#D8BFD8'
+            name: 'Tank-to-wheel'  
+            parent: conversion_plus
+            carrier_in: final_energy_light_vehicles_ethanol        
+            carrier_out: useful_energy_light_vehicles           
+        constraints:       
+            lifetime: 25
+            carrier_ratios:
+                carrier_in:
+                    final_energy_light_vehicles_ethanol: 1 
+                carrier_out:
+                    useful_energy_light_vehicles: 0.00176  #L to useful MWh # considering efficiency of 30%                     
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 
+                om_annual: 0 
+                om_prod: 0 
+            co2:
+                om_prod: 0
+
+    light_vehicles_dummy_ethanol_with_BECCS:
+        essentials:
+            color: '#D8BFD8'
+            name: 'Ethanol + BECCS'  
+            parent: conversion_plus
+            carrier_in: final_energy_light_vehicles_ethanol        
+            carrier_out: useful_energy_light_vehicles
+            carrier_out_2: co2
+            primary_carrier_out: useful_energy_light_vehicles            
+        constraints:       
+            lifetime: 25
+            carrier_ratios:
+                carrier_in:
+                    final_energy_light_vehicles_ethanol: 1 
+                carrier_out_2:
+                    co2: 0.00075  #t CO2/L ethanol 
+                carrier_out:
+                    useful_energy_light_vehicles: 0.00176  #L to useful MWh # considering efficiency of 30%                     
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 #150000       # # USD per (tCO2/h) capacity
+                om_annual: 7500            # USD per (tCO2/h)/year
+                om_prod: 10          # USD per tCO2 captured  
+            co2:
+                om_prod: 0
+
+
+
+    light_vehicles_dummy_ethanol_existing:
+        essentials:
+            color: '#D8BFD8'
+            name: 'Tank-to-wheel'  
+            parent: conversion
+            carrier_in: final_energy_light_vehicles_ethanol        
+            carrier_out: useful_energy_light_vehicles 
+        constraints:
+            energy_eff: 0.00589   #L to useful MWh # considering efficiency of 35% 
+            lifetime: 25 #         
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 
+                om_annual: 0 
+                om_prod: 0 
+            co2:
+                om_prod: 0
+
+                
+    aviation_dummy:
+        essentials:
+            color: '#D8BFD8'
+            name: 'Aviation engine'  
+            parent: conversion
+            carrier_in: final_energy_aviation         
+            carrier_out: useful_energy_aviation 
+        constraints:
+            energy_eff: 0.45
+            lifetime: 25 #         
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 
+                om_annual: 0 
+                om_prod: 0 
+            co2:
+                om_prod: 0                

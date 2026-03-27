@@ -1,0 +1,179 @@
+techs:
+            
+            
+    ref_conversion_1g_electricity:
+        essentials:
+            color: '#D8BFD8'
+            name: 'ref_electricity' 
+            carrier_out: electricity
+            carrier_in: final_energy_light_vehicles_ethanol            
+            parent: conversion
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 0.00361
+            lifetime: 25              
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 # included in supply techs
+                om_con: 0 
+                                                                            
+
+
+
+    ref_ethanol_1g_existing:
+        essentials:
+            color: '#D8BFD8'
+            name: 'ref_ethanol_1g_electricity_high' 
+            carrier: final_energy_light_vehicles_ethanol 
+            parent: supply_plus          
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 1
+            resource: file=resources/ethanol_liters_high.csv
+            resource_unit: energy_per_area
+            lifetime: 25                                   
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 # US$/L
+                om_annual: 0.0121  # US$/L 
+                om_con: 0.1791 # US$/L -- average price from jan/2019 to jan/2022, all states
+                om_prod: -0.0134
+            co2:
+                om_prod:  0.00042 # tCO2eq/L, https://doi.org/10.1007/s11367-018-1505-1
+
+  
+  ##############################
+  
+    ref_ethanol_1g_electricity_high:
+        essentials:
+            color: '#D8BFD8'
+            name: 'ref_ethanol_1g_electricity_high' 
+            carrier: final_energy_light_vehicles_ethanol 
+            parent: supply_plus          
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 1
+            resource: file=resources/ethanol_liters_high.csv
+            resource_unit: energy_per_area
+            lifetime: 25                                   
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 1.2085 # US$/L
+                om_annual: 0.0121  # US$/L 
+                om_con: 0.1791 # US$/L -- average price from jan/2019 to jan/2022, all states
+                om_prod: -0.0134
+            co2:
+                om_prod:  0.00042 # tCO2eq/L, https://doi.org/10.1007/s11367-018-1505-1
+                
+    ref_ethanol_1g_electricity_medium:
+        essentials:
+            color: '#D8BFD8'
+            name: 'ref_ethanol_1g_electricity_medium' 
+            carrier: final_energy_light_vehicles_ethanol 
+            parent: supply_plus
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 1
+            resource: file=resources/ethanol_liters_medium.csv
+            resource_unit: energy_per_area
+            lifetime: 25               
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 1.2581  # US$/L
+                om_annual: 0.0126  # US$/L 
+                om_con: 0.1865 # US$/L -- average price from jan/2019 to jan/2022, all states
+                om_prod: -0.0134
+            co2:
+                om_prod:  0.00042 # tCO2eq/L, https://doi.org/10.1007/s11367-018-1505-1
+                
+    ref_ethanol_1g_electricity_low:
+        essentials:
+            color: '#D8BFD8'
+            name: 'ref_ethanol_1g_electricity_high' 
+            carrier: final_energy_light_vehicles_ethanol 
+            parent: supply_plus
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 1
+            resource: file=resources/ethanol_liters_low.csv
+            resource_unit: energy_per_area
+            lifetime: 25               
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 1.3313 # US$/L
+                om_annual: 0.0133  # US$/L 
+                om_con: 0.1973 # US$/L -- average price from jan/2019 to jan/2022, all states
+                om_prod: -0.0134 #### 298.3 R$/MWh (https://www.ccee.org.br/pt/web/guest/-/infoleilao-dinamico-057-dez-2022-1) average price in auctions or 76.49 US$ considering 3.90 conversion. 3800L produces 1MWh of electricity, this negative cost is related to the electricity production that I can generate using 1L of ethanol.
+            co2:
+                om_prod:  0.00042 # tCO2eq/L, https://doi.org/10.1007/s11367-018-1505-1
+                
+                
+                
+    ref_ethanol_1g_2g_high:
+        essentials:
+            color: '#D8BFD8'
+            name: 'ref_ethanol_1g_2g_high' 
+            carrier: final_energy_light_vehicles_ethanol 
+            parent: supply_plus 
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 1.57 #1.57 # 1g+2g, resources is given in 1g production
+            resource: file=resources/ethanol_liters_high.csv
+            resource_unit: energy_per_area
+            lifetime: 25                
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 1.7383  # US$/L
+                om_annual: 0.1174  # US$/L 
+                om_con: 0.2791 # US$/L 
+            co2:
+                om_prod:  0.00019 # tCO2eq/L, https://doi.org/10.1007/s11367-018-1505-1
+
+    ref_ethanol_1g_2g_medium:
+        essentials:
+            color: '#D8BFD8'
+            name: 'ref_ethanol_1g_2g_medium' 
+            carrier: final_energy_light_vehicles_ethanol 
+            parent: supply_plus 
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 1.57  # 1g+2g, resources is given in 1g production
+            resource: file=resources/ethanol_liters_medium.csv
+            resource_unit: energy_per_area
+            lifetime: 25                
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 1.8097  # US$/L
+                om_annual: 0.1181  # US$/L 
+                om_con: 0.2865 # US$/L 
+            co2:
+                om_prod: 0.00019 # tCO2eq/L, https://doi.org/10.1007/s11367-018-1505-1
+                
+    ref_ethanol_1g_2g_low:
+        essentials:
+            color: '#D8BFD8'
+            name: 'ref_ethanol_1g_2g_low' 
+            carrier: final_energy_light_vehicles_ethanol 
+            parent: supply_plus
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 1.57 #1.57 # 1g+2g, resources is given in 1g production
+            resource: file=resources/ethanol_liters_low.csv
+            resource_unit: energy_per_area
+            lifetime: 25                  
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 1.9149  # US$/L
+                om_annual: 0.1191  # US$/L 
+                om_con: 0.2973 # US$/L 
+            co2:
+                om_prod:  0.00019 # tCO2eq/L, https://doi.org/10.1007/s11367-018-1505-1             
+                

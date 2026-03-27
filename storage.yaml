@@ -1,0 +1,101 @@
+techs:
+
+    tanks_saf: 
+        essentials:
+            color: '#D8BFD5'
+            name: 'Tanks-Aviation'  
+            carrier: final_energy_aviation
+            parent: storage
+        constraints:
+            energy_cap_max: inf
+            storage_cap_max: inf
+            lifetime: 25            
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 #3.776   # US$/L #Tankage (US$/L) - Assumed that 89% of investment costs is to build the tanks (https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021.pdf)
+                om_annual: 0 #0.1483 # US$/L
+
+    tanks_shipping: 
+        essentials:
+            color: '#D8BFD5'
+            name: 'Tanks-Shipping'  
+            carrier: final_energy_shipping
+            parent: storage
+        constraints:
+            energy_cap_max: inf
+            storage_cap_max: inf
+            lifetime: 25            
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 #3.776   # US$/L #Tankage (US$/L) - Assumed that 89% of investment costs is to build the tanks (https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021.pdf)
+                om_annual: 0 #0.1483 # US$/L
+                
+                
+    tanks_ethanol:
+        essentials:
+            color: '#D8BFD5'
+            name: 'Ethanol - storage' 
+            carrier: final_energy_light_vehicles_ethanol         
+            parent: storage
+        constraints:
+            energy_cap_max: inf
+            storage_cap_max: inf
+            lifetime: 25            
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 # 0.776   # US$/L #Tankage (US$/L) - Assumed that 89% of investment costs is to build the tanks (https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021.pdf)
+                om_annual: 0 #.1483 # US$/L                
+                
+                
+    tanks_hvo: 
+        essentials:
+            color: '#D8BFD5'
+            name: 'HVO'  
+            carrier: final_energy_heavy_vehicles
+            parent: storage
+        constraints:
+            energy_cap_max: inf
+            storage_cap_max: inf
+            lifetime: 25            
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0 # 3.776   # US$/L #Tankage (US$/L) - Assumed that 89% of investment costs is to build the tanks (https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021.pdf)
+                om_annual: 0 #0.1483 # US$/L 
+
+
+    storage_co2:
+        essentials:
+            color: '#D8BFD5'
+            name: 'CO2 - storage' 
+            carrier: co2         
+            parent: storage
+        constraints:
+            energy_cap_max: inf
+            storage_cap_max: inf
+            lifetime: 25            
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0  # US$/L #Tankage (US$/L) - Assumed that 89% of investment costs is to build the tanks (https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021.pdf)
+                om_annual: 0 # US$/L
+
+
+    storage_hydrogen:
+        essentials:
+            color: '#D8BFD5'
+            name: 'H2 - storage' 
+            carrier: hydrogen        
+            parent: storage
+        constraints:
+            energy_cap_max: inf
+            storage_cap_max: inf
+            lifetime: 25            
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 0  # US$/L #Tankage (US$/L) - Assumed that 89% of investment costs is to build the tanks (https://www.epe.gov.br/sites-pt/publicacoes-dados-abertos/publicacoes/PublicacoesArquivos/publicacao-620/PITER%202021.pdf)
+                om_annual: 0 # US$/L                  

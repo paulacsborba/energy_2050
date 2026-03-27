@@ -1,0 +1,26 @@
+techs:
+
+# source: https://ens.dk/en/analyses-and-statistics/technology-data-renewable-fuels  - 2050, converted to USD
+
+
+    electrolyser_h2:
+        essentials:
+            color: '#D8BFD8'
+            name: 'Electrolyser'   #PEM 100MW
+            carrier_in: electricity
+            carrier_out: hydrogen 
+            parent: conversion
+        constraints:
+            energy_eff: 0.664   # LHV
+            lifetime: 25 #danish database            
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 376344 # USD/MW_el (DEA 2050)
+                om_annual: 7530  # 2% of CAPEX
+            co2:
+                om_prod: 0.086311475  # t CO2eq/MWh MUDAR 
+
+                          
+ 
+

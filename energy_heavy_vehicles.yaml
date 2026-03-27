@@ -1,0 +1,35 @@
+techs:
+
+
+    hvo_heavy_vehicles:
+        essentials:
+            color: '#D8BFD8'
+            name: "HVO-heavy-vehicles"
+            parent: conversion_plus
+            carrier_out: final_energy_heavy_vehicles     # HVO como energia final p/ shipping
+            carrier_in: soybean
+            carrier_in_2: hydrogen
+            carrier_in_3: electricity
+            primary_carrier_in: soybean            
+        constraints:       
+            lifetime: 25
+      # Razões por 1 MWh de HVO (carrier_out)
+            carrier_ratios:
+                carrier_in:
+                    soybean: 1.0365  
+                carrier_in_2:
+                    hydrogen: 0.1235 
+                carrier_in_3:
+                    electricity: 0.015 
+                carrier_out:
+                    final_energy_heavy_vehicles: 1 
+        costs:
+            monetary:
+                interest_rate: 0.1
+                energy_cap: 69662       # USD/MW
+                om_annual: 43400        # USD/MW/yr
+                om_prod: 10.30          # USD/MWh (por MWh de HVO produzido)
+            co2:
+                om_prod: 0.0000001 
+                       
+          
